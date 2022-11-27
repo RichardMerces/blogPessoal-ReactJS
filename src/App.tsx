@@ -1,41 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/estaticos/navbar/Navbar';
+import Footer from './components/estaticos/footer/Footer';
 import Home from './paginas/home/Home';
-import { Grid } from '@material-ui/core';
-import Navbar from './componentes/estaticos/navbar/Navbar';
-import Footer from './componentes/estaticos/footer/Footer';
+import './App.css';
+import Login from './paginas/login/Login';
+
 
 function App() {
   return (
-    <>
+    <Router>
         <Navbar />
-        <Home />
+        <Routes>
+
+            <Route path="/" element={<Home />} />
+
+            <Route path="/home" element={<Home />} />
+
+            <Route path="/login" element={<Login />} />
+        </Routes>
         <Footer />
-      {/* <Grid container>
-            <Grid item xs={12} sm={12}>
-                <Home />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <Home />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <Home />
-            </Grid>
-            <Grid item xs={12} sm={3}>
-                <Home />
-            </Grid>
-            <Grid item xs={12} sm={3}>
-                <Home />
-            </Grid>
-            <Grid item xs={12} sm={3}>
-                <Home />
-            </Grid>
-            <Grid item xs={12} sm={3}>
-                <Home />
-            </Grid>
-      </Grid> */}
-    </>
+    </Router>
+
     // Todo componente precisa de um tsx e um css.
 
     // trocar a versão do MUI para v4 no site da documentação
