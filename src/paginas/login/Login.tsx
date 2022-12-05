@@ -12,10 +12,8 @@ function Login() {
     const navigate = useNavigate();
     const [token, setToken] = useLocalStorage('token');
     const [userLogin, setUserLogin] = useState<UserLogin>({
-        id: 0,
         usuario: '',
-        senha: '',
-        token: ''
+        senha: ''
     })
 
     function updateModel(e: ChangeEvent<HTMLInputElement>) {
@@ -35,7 +33,7 @@ function Login() {
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         try{
-            await login('/usuarios/logar', userLogin, setToken)
+            await login('/auth/logar', userLogin, setToken)
             alert('Usuario logado com sucesso!')  
         }catch(erro){       
             alert('Dados incorretos!')
