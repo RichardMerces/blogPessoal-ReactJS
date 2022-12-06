@@ -18,33 +18,37 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Routes>
 
-        <Route path="/home" element={<Home />} />
+      <div style={{ minHeight: '100vh' }}>
+        <Routes>
 
-        <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
 
-        <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
 
-        <Route path="/cadastrar" element={<CadastroUsuario />} />
+          <Route path="/login" element={<Login />} />
 
-        <Route path="/temas" element={<ListaTema />} />
+          <Route path="/cadastrar" element={<CadastroUsuario />} />
 
-        <Route path="/posts" element={<ListaPostagem />} />
+          <Route path="/temas" element={<ListaTema />} />
 
-        <Route path='/formularioTema' element={<CadastroTema />} />
+          <Route path="/posts" element={<ListaPostagem />} />
 
-        <Route path='/formularioTema/:id' element={<CadastroTema />} />
+          <Route path='/formularioTema' element={<CadastroTema />} />
 
-        <Route path='/formularioPost' element={<CadastroPost />} />
+          <Route path='/formularioTema/:id' element={<CadastroTema />} />
 
-        <Route path='/formularioPost/:id' element={<CadastroPost />} />
+          <Route path='/formularioPost' element={<CadastroPost />} />
 
-        <Route path='/deletarTema/:id' element={<DeletarTema />} />
+          <Route path='/formularioPost/:id' element={<CadastroPost />} />
 
-        <Route path='/deletarPostagem/:id' element={<DeletarPostagem />} />
+          <Route path='/deletarTema/:id' element={<DeletarTema />} />
 
-      </Routes>
+          <Route path='/deletarPostagem/:id' element={<DeletarPostagem />} />
+
+        </Routes>
+      </div>
+      
       <Footer />
     </Router>
 

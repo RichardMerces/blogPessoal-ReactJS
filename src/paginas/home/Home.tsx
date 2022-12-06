@@ -1,10 +1,28 @@
-import React from 'react';
-import {Typography,Grid, Button} from '@material-ui/core';
+import React, { useEffect } from 'react';
+import {Typography, Grid, Button} from '@material-ui/core';
 import {Box} from '@mui/material';
-import TabPostagem from '../../components/postagens/tabPostagem/TabPostagem';
 import './Home.css';
+import { useNavigate } from 'react-router';
+import useLocalStorage from 'react-use-localstorage';
+import ModalPostagem from '../../components/postagens/modalPostaagem/ModalPostagem';
+import TabPostagem from '../../components/postagens/tabPostagem/TabPostagem';
 
 function Home() {
+
+    let navigate = useNavigate();
+    const [token, setToken] = useLocalStorage('token');
+    
+    useEffect(() => {
+      if (token == "") {
+          alert("Você precisa estar logado")
+          navigate("/login")
+  
+      }
+  }, [token])
+
+  function openPosts(){
+    navigate('/posts')
+}
     return (
         <>
             <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
@@ -15,8 +33,9 @@ function Home() {
                     </Box>
                     <Box display="flex" justifyContent="center">
                         <Box marginRight={1}>
+                            <ModalPostagem />
                         </Box>
-                        <Button variant="outlined" className='botao'>Ver Postagens</Button>
+                        <Button onClick={openPosts} variant="outlined" className='botao'>Ver Postagens</Button>
                     </Box>
                 </Grid>
                 <Grid item xs={6} >
@@ -31,3 +50,7 @@ function Home() {
 }
 
 export default Home;
+
+function openPost() {
+    throw new Error('Function not implemented.');
+}
