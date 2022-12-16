@@ -7,6 +7,7 @@ import UserLogin from '../../models/userLogin';
 import { login } from '../../services/Service';
 import { useDispatch } from 'react-redux';
 import { addToken } from '../../store/tokens/action';
+import { toast } from 'react-toastify';
 
 function Login() {
 
@@ -37,9 +38,27 @@ function Login() {
         e.preventDefault()
         try{
             await login('/auth/logar', userLogin, setToken)
-            alert('Usuario logado com sucesso!')  
-        }catch(erro){       
-            alert('Dados incorretos!')
+            toast.success('Usuario logado com sucesso!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });  
+        }catch(erro){
+            toast.error('Dados incorretos!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });       
         }
     }
 
